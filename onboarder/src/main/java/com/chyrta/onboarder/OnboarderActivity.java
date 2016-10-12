@@ -37,6 +37,8 @@ public abstract class OnboarderActivity extends AppCompatActivity implements Vie
     private boolean shouldDarkenButtonsLayout = false;
     private boolean shouldUseFloatingActionButton = false;
 
+    public int startingPage = -1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +66,10 @@ public abstract class OnboarderActivity extends AppCompatActivity implements Vie
         vpOnboarderPager.setAdapter(onboarderAdapter);
         colors = ColorsArrayBuilder.getPageBackgroundColors(this, pages);
         circleIndicatorView.setPageIndicators(pages.size());
+
+        if( startingPage >= 0 ){
+            vpOnboarderPager.setCurrentItem(startingPage);
+        }
     }
 
     public void setInactiveIndicatorColor(int color) {
@@ -183,8 +189,8 @@ public abstract class OnboarderActivity extends AppCompatActivity implements Vie
     public void onPageSelected(int position) {
         int lastPagePosition = onboarderAdapter.getCount() - 1;
         circleIndicatorView.setCurrentPage(position);
-        ibNext.setVisibility(position == lastPagePosition && !this.shouldUseFloatingActionButton ? View.GONE : View.VISIBLE);
-        btnFinish.setVisibility(position == lastPagePosition && !this.shouldUseFloatingActionButton ? View.VISIBLE : View.GONE);
+        ibNext.setVisibility(View.GONE);
+        btnFinish.setVisibility(View.VISIBLE);
         if (this.shouldUseFloatingActionButton)
             this.fab.setImageResource(position == lastPagePosition ? R.drawable.ic_done_white_24dp : R.drawable.ic_arrow_forward_white_24dp);
     }
