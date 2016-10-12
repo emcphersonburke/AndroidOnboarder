@@ -42,7 +42,7 @@
         android:layout_below="@id/lyt_text"
         android:adjustViewBounds="true"
         android:layout_centerInParent="true"
-        android:scaleType="fitCenter"/>
+        android:scaleType="matrix"/>
 
 
 </RelativeLayout>

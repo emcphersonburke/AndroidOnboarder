@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipToPadding="false"
     android:padding="@dimen/activity_margin">
 
     <LinearLayout
@@ -42,7 +43,7 @@
         android:layout_below="@id/lyt_text"
         android:adjustViewBounds="true"
         android:layout_centerInParent="true"
-        android:scaleType="fitCenter"/>
+        android:scaleType="matrix" />
 
 
 </RelativeLayout>
